@@ -22,7 +22,7 @@ public class ProduitTest {
     @Test
 	public void testName() throws Exception {
     	Produit p = new Produit();
-    	p.setLibelle("banane");
+    	p.setLibelle("pomme");
     	repository.saveAndFlush(p);
 	}
     
