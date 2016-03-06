@@ -3,7 +3,9 @@ package fr.aleclerc.courses.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,9 +17,11 @@ public class Panier extends AbstractEntityBase {
 	 * 
 	 */
 	private static final long serialVersionUID = -8616634038191718769L;
-	@OneToMany( mappedBy="panier")
+	@OneToMany( fetch = FetchType.EAGER,mappedBy="panier")
 	private List<ProduitSelect> produitsSelect;
+	@Column
 	private Boolean archive;
+	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateArchivage;
 	public List<ProduitSelect> getProduitsSelect() {
