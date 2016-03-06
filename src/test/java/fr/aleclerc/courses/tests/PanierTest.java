@@ -21,7 +21,6 @@ import fr.aleclerc.courses.repositories.ProduitSelectRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(CoursesApplication.class)
-
 public class PanierTest {
 	@Autowired
 	PanierRepository panierRepository;

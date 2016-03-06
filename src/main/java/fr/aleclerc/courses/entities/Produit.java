@@ -15,18 +15,28 @@ public class Produit extends AbstractEntityBase {
 	@Column
 	private String libelle;
 	@ManyToOne
-	@JoinColumn(name="categorie_id")
+	@JoinColumn(name = "categorie_id")
 	private Categorie categorie;
+
 	
+	
+	@Override
+	public String toString() {
+		return "Produit [libelle=" + libelle + ", categorie=" + categorie + "]";
+	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	public Categorie getCategorie() {
 		return categorie;
 	}
+
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
