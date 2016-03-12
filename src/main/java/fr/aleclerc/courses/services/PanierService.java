@@ -1,8 +1,8 @@
 package fr.aleclerc.courses.services;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +23,21 @@ public class PanierService {
 	private ProduitSelectRepository produitSelectRepo;
 	
 
-	@Transactional
+	
 	public Panier getCurrent(){
 		List<Panier> paniers= panierRepo.getCurrent();
 		if(paniers != null && !paniers.isEmpty()){
 			return paniers.get(0);
 		}
+		
+		if(paniers == null || paniers.isEmpty()){
+			Panier panier = new Panier();
+			panier.setArchive(false);
+			panier.setProduitsSelect(new ArrayList<ProduitSelect>());
+			panierRepo.saveAndFlush(panier);
+			return panier;
+		}
+		
 		return null;
 	}
 
@@ -39,5 +48,14 @@ public class PanierService {
 			produitRepo.saveAndFlush(produitSelect.getProduit());
 		}
 		produitSelectRepo.saveAndFlush(produitSelect);
+	}
+	public void archiverCourant(){
+		List<Panier> paniers= panierRepo.getCurrent();
+		if(paniers != null && !paniers.isEmpty()){
+			Panier panier = paniers.get(0);
+			 panier.setArchive(true);
+			 panier.setDateArchivage(new Date());
+			 panierRepo.saveAndFlush(panier);
+		}
 	}
 }

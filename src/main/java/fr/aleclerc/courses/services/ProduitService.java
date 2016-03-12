@@ -27,5 +27,9 @@ public class ProduitService {
 	public List<Produit> findAll() {
 		return repo.findAll();
 	}
+	@Transactional
+	public Produit update(Produit produit) {
+		return repo.saveAndFlush(produit);
+	}
 }
 
