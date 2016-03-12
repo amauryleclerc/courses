@@ -1,26 +1,27 @@
 package fr.aleclerc.courses.resources;
 
-import java.util.List;
-
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fr.aleclerc.courses.entities.Produit;
-import fr.aleclerc.courses.repositories.ProduitRepository;
+import fr.aleclerc.courses.entities.Categorie;
+import fr.aleclerc.courses.services.CategorieService;
 
 @Component
 @Path("/categorie")
 public class CategorieResource {
 	@Autowired
-	private ProduitRepository repo;
+	private CategorieService service;
 
-	@GET
-	@Produces("application/json")
-	public List<Produit> getProduits() {
-		return repo.findAll();
+	@POST
+	@Consumes("application/json")
+	public Response add(Categorie cat) {
+		System.out.println(cat.getLibelle());
+		 service.add(cat);
+		 return Response.ok().build();
 	}
 }

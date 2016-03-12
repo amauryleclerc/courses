@@ -7,6 +7,8 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @MappedSuperclass
 public abstract class AbstractEntityBase implements Persistable<String> {
 
@@ -26,7 +28,7 @@ public abstract class AbstractEntityBase implements Persistable<String> {
 	protected void setId(final String id) {
 		this.id = id;
 	}
-
+	@JsonIgnore
 	public boolean isNew() {
 		return this.id == null;
 	}

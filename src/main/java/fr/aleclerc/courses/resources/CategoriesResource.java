@@ -10,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.aleclerc.courses.entities.Categorie;
-import fr.aleclerc.courses.repositories.CategorieRepository;
+import fr.aleclerc.courses.services.CategorieService;
 
 @Component
 @Path("/categories")
 public class CategoriesResource {
 	@Autowired
-	private CategorieRepository repo;
+	private CategorieService service;
 
 	@GET
 	@Produces("application/json")
 	public List<Categorie> getCategories() {
-		return repo.findAll();
+		return service.getAll();
 	}
 }

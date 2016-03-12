@@ -8,22 +8,21 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.aleclerc.courses.CoursesApplication;
-import fr.aleclerc.courses.entities.Produit;
-import fr.aleclerc.courses.repositories.ProduitRepository;
+import fr.aleclerc.courses.entities.Categorie;
+import fr.aleclerc.courses.repositories.CategorieRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(CoursesApplication.class)
-
-public class ProduitTest {
+public class CategorieTest {
     @Autowired
-    ProduitRepository repository;
+    CategorieRepository repository;
     
     
     @Test
 	public void testName() throws Exception {
-    	Produit p = new Produit();
-    	p.setLibelle("Pain de mie");
-    	repository.saveAndFlush(p);
+    	Categorie c= new Categorie();
+    	c.setLibelle("Boulangerie");
+    	repository.saveAndFlush(c);
 	}
     
 }
