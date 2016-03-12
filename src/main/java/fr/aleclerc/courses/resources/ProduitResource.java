@@ -11,10 +11,11 @@ import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.aleclerc.courses.entities.Produit;
 import fr.aleclerc.courses.services.ProduitService;
-
+@CrossOrigin(maxAge = 3600)
 @Component
 @Path("/produits")
 public class ProduitResource {
