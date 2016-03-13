@@ -3,6 +3,7 @@ package fr.aleclerc.courses.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,5 +58,15 @@ public class PanierService {
 			 panier.setDateArchivage(new Date());
 			 panierRepo.saveAndFlush(panier);
 		}
+	}
+
+
+	public ProduitSelect getProduitSelect(String idProduit) {
+		Panier panier = this.getCurrent();
+		Optional<ProduitSelect> p = panier.getProduitsSelect().stream().filter(x -> x.getProduit().getId().equals(idProduit) ).findFirst();
+		if(p.isPresent()){
+			return p.get();
+		}
+		return null;
 	}
 }
