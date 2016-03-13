@@ -2,17 +2,22 @@ package fr.aleclerc.courses.resources;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.aleclerc.courses.entities.Categorie;
 import fr.aleclerc.courses.services.CategorieService;
-@CrossOrigin(maxAge = 3600)
+
 @Component
 @Path("/categories")
 public class CategoriesResource {
@@ -23,5 +28,26 @@ public class CategoriesResource {
 	@Produces("application/json")
 	public List<Categorie> getCategories() {
 		return service.getAll();
+	}
+	@POST
+	@Consumes("application/json")
+	public Response add(Categorie cat) {
+		System.out.println(cat.getLibelle());
+		 service.add(cat);
+		 return Response.ok().build();
+	}
+	@DELETE
+	@Path("{id}")
+	public Response delete(@PathParam("id") String id) {
+		 service.delete(id);
+		 return Response.ok().build();
+		
+	}
+
+	@PUT
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Categorie updateProduit(Categorie categorie) {
+		return service.update(categorie);
 	}
 }

@@ -11,12 +11,11 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.aleclerc.courses.entities.Panier;
 import fr.aleclerc.courses.entities.ProduitSelect;
 import fr.aleclerc.courses.services.PanierService;
-@CrossOrigin(maxAge = 3600)
+
 @Component
 @Path("/panier")
 public class PanierResource {

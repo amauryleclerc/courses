@@ -15,5 +15,6 @@ public interface ProduitRepository extends JpaRepository<Produit, String> {
 	
 	   @Query("SELECT p FROM Produit p WHERE p.libelle LIKE :search%")
 	    public List<Produit> searchWithJPQLQuery(@Param("search") String search, Pageable pageRequest);
-	 
+	   
+	//   public List<Produit> findProduitsByCategorie(Categorie categorie);
 }

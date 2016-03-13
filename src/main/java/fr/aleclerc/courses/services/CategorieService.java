@@ -25,4 +25,12 @@ public class CategorieService {
 	public Categorie add(Categorie cat){
 		return repo.saveAndFlush(cat);
 	}
+
+	public void delete(String id) {
+		repo.delete(id);
+	}
+
+	public Categorie update(Categorie categorie) {
+		return repo.saveAndFlush(categorie);
+	}
 }
