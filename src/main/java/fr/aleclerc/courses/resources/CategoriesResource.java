@@ -36,6 +36,20 @@ public class CategoriesResource {
 		 service.add(cat);
 		 return Response.ok().build();
 	}
+	@POST
+	@Path("up")
+	@Consumes("application/json")
+	public Response up(Categorie cat) {
+		 service.up(cat);
+		 return Response.ok().build();
+	}
+	@POST
+	@Path("down")
+	@Consumes("application/json")
+	public Response down(Categorie cat) {
+		 service.down(cat);
+		 return Response.ok().build();
+	}
 	@DELETE
 	@Path("{id}")
 	public Response delete(@PathParam("id") String id) {
@@ -47,7 +61,7 @@ public class CategoriesResource {
 	@PUT
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Categorie updateProduit(Categorie categorie) {
+	public Categorie update(Categorie categorie) {
 		return service.update(categorie);
 	}
 }
