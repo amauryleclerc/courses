@@ -25,6 +25,13 @@ public class ProduitSelect extends AbstractEntityBase {
 	private Boolean pris;
 	@Column
 	private Integer quantite;
+	@Column
+	private String unite;
+	@Column
+	private String commentaire;
+	@Column
+	private boolean promo;
+	
 	public Produit getProduit() {
 		return produit;
 	}
@@ -48,6 +55,24 @@ public class ProduitSelect extends AbstractEntityBase {
 	}
 	public void setPanier(Panier panier) {
 		this.panier = panier;
+	}
+	public String getUnite() {
+		return unite;
+	}
+	public void setUnite(String unite) {
+		this.unite = unite;
+	}
+	public String getCommentaire() {
+		return commentaire;
+	}
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+	public boolean isPromo() {
+		return promo;
+	}
+	public void setPromo(boolean promo) {
+		this.promo = promo;
 	}
 
 }
